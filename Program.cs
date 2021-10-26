@@ -37,6 +37,7 @@ namespace odev1
                     }
                     case 3:{
                         Console.Clear();
+                        Choice.Option3();
                         break;
                     }
                     case 4:{
@@ -52,6 +53,7 @@ namespace odev1
             }
         }
     }
+
 
     public class Choice
     {
@@ -128,6 +130,35 @@ namespace odev1
                     Console.Write(item + " ");       
                 else
                     continue;
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public void Option3()
+        {
+            Console.WriteLine("Lütfen pozitif bir tamsayı giriniz:");
+
+            uint input_n;
+            while (!UInt32.TryParse(Console.ReadLine(), out input_n)){ 
+                Console.WriteLine("Pozitif tam sayı dışında bir veri girdiniz.");
+            }
+
+            Console.WriteLine("\nLütfen " + input_n + " tane kelime giriniz:");
+            string[] my_list = new string[input_n];
+            string element;
+            for (int i = 0; i < input_n; i++)
+            {
+                element = Console.ReadLine();
+                my_list[i] = element;
+            }
+            Array.Reverse(my_list);
+
+            Console.WriteLine("\nGirmiş olduğunuz kelimelerin tersten sıralanışı.");
+            foreach (string item in my_list)
+            {
+                Console.WriteLine(item);
             }
 
             Console.ReadKey();
