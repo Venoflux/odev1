@@ -42,6 +42,7 @@ namespace odev1
                     }
                     case 4:{
                         Console.Clear();
+                        Choice.Option4();
                         break;
                     }
                     default:{
@@ -136,6 +137,7 @@ namespace odev1
             Console.Clear();
         }
 
+
         public void Option3()
         {
             Console.WriteLine("Lütfen pozitif bir tamsayı giriniz:");
@@ -161,6 +163,32 @@ namespace odev1
                 Console.WriteLine(item);
             }
 
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+
+        public void Option4()
+        {
+            Console.WriteLine("Bir cümle giriniz.");
+
+            string text = Console.ReadLine();
+            char[] delimiterChars = { ' ', ',', '.', ':', '\t', '!', '?'};
+            string[] words = text.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
+
+            int word_count = 0;
+            int letter_count = 0;
+
+            foreach (string word in words)
+            {
+                word_count++;
+                foreach (char letter in word)
+                {
+                    letter_count++;
+                }
+            }
+
+            Console.WriteLine("\nCümlen toplamda " + word_count + " kelime ve " + letter_count + " harf içeriyor.");
             Console.ReadKey();
             Console.Clear();
         }
