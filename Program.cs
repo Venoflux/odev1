@@ -56,41 +56,40 @@ namespace odev1
     {
         public void Option1()
         {
-            Console.WriteLine("Lütfen pozitif bir sayı giriniz:");
-            int length;
-            while (!Int32.TryParse(Console.ReadLine(), out length)){}
+            Console.WriteLine("Lütfen pozitif bir tam sayı giriniz:");
 
-            try{
-                uint[] my_list = new uint[length];
-                uint element;
-                Console.WriteLine("Lütfen " + length + " tane pozitif sayı giriniz:");
-
-                for (int i = 0; i < length; i++)
-                {
-                    while (!UInt32.TryParse(Console.ReadLine(), out element)){
-                        Console.WriteLine("Pozitif sayı dışında bir veri girdiniz.");
-                    }
-                    my_list[i] = element;
-                }
-                
-                Console.WriteLine("\nGirmiş olduğunuz çift sayılar");
-                foreach (uint item in my_list)
-                {
-                    if (item%2==0)
-                        Console.Write(item + " ");       
-                    else
-                        continue;
-                }
-                Console.ReadKey();
-                Console.Clear();
+            // Kullanıcıyı pozitif bir sayı girmeye zorlar ve girilen sayı boyutunda bir array açar.
+            uint length;
+            while (!UInt32.TryParse(Console.ReadLine(), out length)){ 
+                Console.WriteLine("Pozitif tam sayı dışında bir veri girdiniz.");
             }
-            catch(Exception ex)
+            uint[] my_list = new uint[length];
+
+            Console.WriteLine("Lütfen " + length + " tane pozitif tam sayı giriniz:");
+
+            // Her bir pozitif sayı elemanını atamak için bir loop, istenilen dışında bir veri girilir ise tekrar kaldığı yerden tekrar ister.
+            uint element;
+            for (int i = 0; i < length; i++)
             {
-                string errormessage = ex.Message.ToString();
-                Console.Clear();
-                Console.WriteLine(errormessage+"\n");
+                while (!UInt32.TryParse(Console.ReadLine(), out element)){
+                    Console.WriteLine("Pozitif tam sayı dışında bir veri girdiniz.");
+                }
+                my_list[i] = element;
             }
-        }
+            
+            // Girilen pozitif sayıları doğrusal bir formatta sıralar.
+            Console.WriteLine("\nGirmiş olduğunuz çift tam sayılar");
+            foreach (uint item in my_list)
+            {
+                if (item%2==0)
+                    Console.Write(item + " ");       
+                else
+                    continue;
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+            }
 
         public void Option2()
         {
