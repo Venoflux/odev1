@@ -32,6 +32,7 @@ namespace odev1
                     }
                     case 2:{
                         Console.Clear();
+                        Choice.Option2();
                         break;
                     }
                     case 3:{
@@ -89,11 +90,48 @@ namespace odev1
 
             Console.ReadKey();
             Console.Clear();
-            }
+        }
+
 
         public void Option2()
         {
+            Console.WriteLine("Lütfen 2 pozitif tam sayı giriniz:");
 
+            // n ve m değerlerini alır
+            uint input_n;
+            while (!UInt32.TryParse(Console.ReadLine(), out input_n)){ 
+                Console.WriteLine("Pozitif tam sayı dışında bir veri girdiniz.");
+            }
+            uint input_m;
+            while (!UInt32.TryParse(Console.ReadLine(), out input_m)){ 
+                Console.WriteLine("Pozitif tam sayı dışında bir veri girdiniz.");
+            }
+
+            Console.Clear();
+            Console.WriteLine("Lütfen " + input_n + " tane pozitif tam sayı giriniz:");
+            // alınan n değeri kadar uzun boş bir array açıp kullanıcıdan pozitif tam sayılarla doldurmasını ister
+            uint[] my_list = new uint[input_n];
+            uint element;
+            for (int i = 0; i < input_n; i++)
+            {
+                while (!UInt32.TryParse(Console.ReadLine(), out element)){
+                    Console.WriteLine("Pozitif tam sayı dışında bir veri girdiniz.");
+                }
+                my_list[i] = element;
+            }
+
+            // m ile tam bölünen elemalarını print eder
+            Console.WriteLine("\nGirmiş olduğunuz "+ input_m + " ile bölünebilen tam sayılar");
+            foreach (uint item in my_list)
+            {
+                if (item%input_m==0)
+                    Console.Write(item + " ");       
+                else
+                    continue;
+            }
+
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
